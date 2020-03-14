@@ -1,0 +1,3 @@
+{
+  "mongoURI": "mongodb+srv://Ion123:Ion123@devsite-dcbtp.mongodb.net/test?retryWrites=true&w=majority"
+}
