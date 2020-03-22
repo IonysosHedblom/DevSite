@@ -15,7 +15,9 @@ const User = require('../../models/User');
 // @access Public
 router.get('/', auth, async (req, res) => {
   try {
+    // Check for a user with the request user id which is included in the token
     const user = await User.findById(req.user.id).select('-password');
+    // Send back the user
     res.json(user);
   } catch(err) {
     console.error(err.message);
