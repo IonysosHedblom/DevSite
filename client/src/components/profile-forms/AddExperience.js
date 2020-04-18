@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addExperience } from '../../actions/profile';
 
-const AddExperience = props => {
+const AddExperience = ({ addExperience, history }) => {
   const [formData, setFormData] = useState({
     company: '',
     title: '',
@@ -22,6 +22,11 @@ const AddExperience = props => {
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  const onSubmit = e => {
+    e.preventDefault();
+    addExperience(formData, history);
+  };
+
   return (
     <Fragment>
       <h1 className='large text-primary'>Add An Experience</h1>
@@ -30,7 +35,7 @@ const AddExperience = props => {
         positions that you have had in the past
       </p>
       <small>* = required field</small>
-      <form className='form'>
+      <form className='form' onSubmit={e => onSubmit(e)}>
         <div className='form-group'>
           <input
             type='text'
@@ -71,12 +76,28 @@ const AddExperience = props => {
         </div>
         <div className='form-group'>
           <p>
-            <input type='checkbox' name='current' value='' /> Current Job
+            <input
+              type='checkbox'
+              name='current'
+              checked={current}
+              value={current}
+              onChange={e => {
+                setFormData({ ...formData, current: !current });
+                toggleDisabled(!toDateDisabled);
+              }}
+            />{' '}
+            Current Job
           </p>
         </div>
         <div className='form-group'>
           <h4>To Date</h4>
-          <input type='date' name='to' />
+          <input
+            type='date'
+            name='to'
+            value={to}
+            onChange={e => onChange(e)}
+            disabled={toDateDisabled ? 'disabled' : ''}
+          />
         </div>
         <div className='form-group'>
           <textarea
@@ -84,6 +105,8 @@ const AddExperience = props => {
             cols='30'
             rows='5'
             placeholder='Job Description'
+            value={description}
+            onChange={e => onChange(e)}
           ></textarea>
         </div>
         <input type='submit' className='btn btn-primary my-1' />
