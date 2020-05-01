@@ -1,0 +1,6 @@
+{
+  "mongoURI": "mongodb+srv://Ion123:Ion123@devsite-dcbtp.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken",
+  "githubClientId": "c8d566fc6a00b2e69bf2",
+  "githubSecret": "4c3a0cf4106590098733b4c520ce138495347474"
+}
