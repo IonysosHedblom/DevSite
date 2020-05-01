@@ -366,13 +366,14 @@ router.get('/github/:username', (req, res) => {
   try {
     // Construct an options object with an URI
     const options = {
-      uri: `https://api.github.com/users/${
-        req.params.username
-      }/repos?per_page=5&sort=created:asc&client_id=${config.get(
-        'githubClientId'
-      )}&client_secret=${config.get('githubSecret')}`,
+      uri: encodeURI(
+        `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc`
+      ),
       method: 'GET',
-      headers: { 'user-agent': 'node.js' },
+      headers: {
+        'user-agent': 'node.js',
+        Authorization: `token ${config.get('githubToken')}`,
+      },
     };
     request(options, (error, response, body) => {
       if (error) console.error(error);
