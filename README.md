@@ -3,7 +3,7 @@
 DevSite is a social network for developers, created with React, express, mongoDB and nodejs.
 
 # Link for a demo below
-https://ionysosdevsite.herokuapp.com/dashboard
+https://ionysosdevsite.herokuapp.com
 
 ## Getting Started
 * Clone the project
