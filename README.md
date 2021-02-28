@@ -1,6 +1,8 @@
 # Link for a demo below
 https://ionysosdevsite.herokuapp.com
 
+(May take up to a minute to load the page, due to the database and herokus sleep mode)
+
 
 ## DevSite info
 
